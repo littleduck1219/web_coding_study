@@ -62,16 +62,16 @@ function App() {
 		setTodos(cancleTodos);
 	};
 
-	const { inProgressTodos, comletedTodos } = lists.reduce(
+	const { inProgressTodos, comletedTodos } = todos.reduce(
 		(acc, list) => {
 			if (list.set) {
-				acc.completedTodos.push(list);
+				acc.comletedTodos.push(list);
 			} else {
 				acc.inProgressTodos.push(list);
 			}
 			return acc;
 		},
-		{ inProgressTodos: [], completedTodos: [] }
+		{ inProgressTodos: [], comletedTodos: [] }
 	);
 
 	return (
