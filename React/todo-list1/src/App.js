@@ -66,7 +66,7 @@ function App() {
 	const comletedTodos = todos.filter((todo) => todo.set);
 
 	return (
-		<div>
+		<div className="layout">
 			<Header />
 			<Form
 				title={title}

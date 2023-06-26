@@ -1,3 +1,9 @@
+.layout {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 800px;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -60,7 +66,7 @@
 	height: 200px;
 	border: 1px solid black;
 	border-radius: 10px;
-	margin: 30px;
+	margin: 4px;
 }
 
 .todo-content > h3 {
@@ -93,4 +99,10 @@
 	border: 2px solid black;
 	border-radius: 6px;
 	background-color: white;
+}
+
+.card-container {
+	display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
