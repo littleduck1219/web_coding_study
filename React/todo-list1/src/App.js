@@ -20,7 +20,7 @@ function App() {
 
 	const clickAddButtonHandler = () => {
 		const newToDo = {
-			id: todos.length + 1,
+			id: Date.now(),
 			title,
 			content,
 			set: false,
@@ -62,8 +62,17 @@ function App() {
 		setTodos(cancleTodos);
 	};
 
-	const inProgressTodos = todos.filter((todo) => !todo.set);
-	const comletedTodos = todos.filter((todo) => todo.set);
+	const { inProgressTodos, comletedTodos } = lists.reduce(
+		(acc, list) => {
+			if (list.set) {
+				acc.completedTodos.push(list);
+			} else {
+				acc.inProgressTodos.push(list);
+			}
+			return acc;
+		},
+		{ inProgressTodos: [], completedTodos: [] }
+	);
 
 	return (
 		<div className="layout">
