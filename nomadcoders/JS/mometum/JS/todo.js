@@ -13,17 +13,20 @@ function saveToDos() {
 function deleteTodo(event) {
 	const li = event.target.parentElement;
 	li.remove();
+	toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+	saveToDos();
 }
 
 function paintToDo(newTodo) {
 	const li = document.createElement("li");
+	li.id = newTodo.id;
 	const span = document.createElement("span");
+	span.innerHTML = newTodo.text;
 	const button = document.createElement("button");
 	button.innerHTML = "❌";
 	button.addEventListener("click", deleteTodo);
 	li.appendChild(span);
 	li.appendChild(button);
-	span.innerHTML = newTodo;
 	toDoList.appendChild(li);
 }
 
@@ -31,9 +34,13 @@ function handleToDoSubmit(event) {
 	event.preventDefault();
 	const newTodo = toDoInput.value;
 	toDoInput.value = "";
-	console.log(newTodo, toDoInput.value);
-	toDos.push(newTodo);
-	paintToDo(newTodo);
+	const newToDoObj = {
+		text: newTodo,
+		id: Date.now(), // id를 구별하기 위한 랜덤 숫자
+	};
+	console.log(newToDoObj, toDoInput.value);
+	toDos.push(newToDoObj);
+	paintToDo(newToDoObj);
 	saveToDos();
 }
 
@@ -44,6 +51,6 @@ console.log(saveToDos);
 if (savedToDos !== null) {
 	const parsedToDos = JSON.parse(savedToDos);
 	console.log(parsedToDos);
-	toDos - parsedToDos;
+	toDos = parsedToDos;
 	parsedToDos.forEach(paintToDo);
 }
