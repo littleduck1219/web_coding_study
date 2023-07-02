@@ -1,19 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import * as action from "../redux/modules/todoSlice";
 
-function Todocard({ item, todos, setTodos }) {
-	console.log("card render");
-
+function Todocard({ item }) {
+	// console.log("card render");
+	const dispatch = useDispatch();
 	const removeButtonHandler = (id) => {
-		const deleteTodo = todos.filter((todo) => todo.id !== id);
-		setTodos(deleteTodo);
+		dispatch(action.delete_todo(id));
 	};
 
 	const toggleButtonHandler = (id) => {
-		const toggleTodo = todos.map((item) => {
-			return item.id === id ? { ...item, set: !item.set } : item;
-		});
-		setTodos(toggleTodo);
+		dispatch(action.update_todo(id));
 	};
 
 	const type = item.set ? "취소" : "완료";

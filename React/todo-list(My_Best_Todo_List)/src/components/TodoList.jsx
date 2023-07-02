@@ -1,13 +1,16 @@
 import React from "react";
 import Todocard from "./Todocard";
 import styled from "styled-components";
+import { SetTodo } from "../redux/modules/todoSlice";
+import { useSelector } from "react-redux";
 
-function TodoList({ todos, setTodos, set }) {
+function TodoList({ set }) {
+	const todoLists = useSelector(SetTodo);
 	// const inProgressTodo = todos.filter((todo) => !todo.set);
 	// const completeTodo = todos.filter((todo) => todo.set);
 	console.log("list render");
 
-	const { inProgressTodo, completeTodo } = todos.reduce(
+	const { inProgressTodo, completeTodo } = todoLists.reduce(
 		(acc, item) => {
 			if (item.set) {
 				acc.completeTodo.push(item);
@@ -23,10 +26,10 @@ function TodoList({ todos, setTodos, set }) {
 
 	return (
 		<div className='todo'>
-			<TodoContainerTitle>{set ? "Done...🎉" : "working...🔥"}</TodoContainerTitle>
+			<TodoContainerTitle>{set ? "Done...🦋" : "working...🐝"}</TodoContainerTitle>
 			<TodoCardContainer className='card-container'>
 				{filterTodos.map((item) => {
-					return <Todocard key={item.id} item={item} todos={todos} setTodos={setTodos} />;
+					return <Todocard key={item.id} item={item} />;
 				})}
 			</TodoCardContainer>
 		</div>

@@ -10,8 +10,9 @@ function Todopage() {
 	return (
 		<div>
 			<Mousemover />
-			<Todoinput todos={todos} setTodos={setTodos} set={todos.set} />
-			<Todocontent todos={todos} setTodos={setTodos} set={todos.set} />
+			<Todoinput todos={todos} setTodos={setTodos} />
+			<Todocontent todos={todos} setTodos={setTodos} set={false} />
+			<Todocontent todos={todos} setTodos={setTodos} set={true} />
 		</div>
 	);
 }

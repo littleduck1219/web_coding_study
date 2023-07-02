@@ -1,9 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-function Todocard({ item, removeTodos, settingTodos }) {
-	const deleteButtonHandler = (id) => {
-		removeTodos(item.id);
+function Todocard({ item, todos, setTodos }) {
+	const removeTodos = (id) => {
+		const deleteTodos = todos.filter((item) => item.id !== id);
+		setTodos(deleteTodos);
+	};
+
+	const settingTodos = (id) => {
+		console.log("todos in settingTodos:", todos);
+		console.log("setTodos in settingTodos:", setTodos);
+		console.log("item in Todocard:", item);
+		const updateTodos = todos.map((item) => {
+			return item.id === id ? { ...item, set: !item.set } : item;
+		});
+		setTodos(updateTodos);
 	};
 
 	return (
@@ -11,8 +22,8 @@ function Todocard({ item, removeTodos, settingTodos }) {
 			<CardTitle>{item.title}</CardTitle>
 			<CardContent>{item.content}</CardContent>
 			<CardButtonContainer>
-				<CardButton onClick={() => deleteButtonHandler(item.id)}>삭제하기</CardButton>
-				<CardButton onClick={() => deleteButtonHandler(item.id)}>{item.set ? "취소" : "완료"}</CardButton>
+				<CardButton onClick={() => removeTodos(item.id)}>삭제하기</CardButton>
+				<CardButton onClick={() => settingTodos(item.id)}>{item.set ? "취소" : "완료"}</CardButton>
 			</CardButtonContainer>
 		</TodoCard>
 	);
@@ -26,6 +37,7 @@ const TodoCard = styled.div`
 	border: 1px solid skyblue;
 	border-radius: 20px;
 	padding: 20px;
+	margin: 20px;
 `;
 
 const CardTitle = styled.h2`

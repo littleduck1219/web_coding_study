@@ -25,8 +25,12 @@ function Todoinput({ todos, setTodos }) {
 
 	const addTodoButtonHandler = (event) => {
 		event.preventDefault();
-		setTodos([...todos, inputs]);
-		setInputs({ id: todoId, title: "", content: "", set: false });
+		if (title === "" || content === "") {
+			alert("제목과 내용을 모두 입력해주세요.");
+		} else {
+			setTodos([...todos, inputs]);
+			setInputs({ id: todoId, title: "", content: "", set: false });
+		}
 	};
 
 	return (

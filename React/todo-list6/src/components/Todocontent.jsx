@@ -15,23 +15,18 @@ function Todocontent({ todos, setTodos, set }) {
 		{ inprogressTodo: [], completeTodo: [] }
 	);
 
-	const removeTodos = (id) => {
-		const deleteTodos = todos.filter((item) => item.id !== id);
-	};
-
-	const settingTodos = (id) => {
-		const updateTodos = todos.map((item) => {
-			return item.id === id ? { ...item, set: !item.set } : item;
-		});
-	};
-
 	const filterTodos = set ? completeTodo : inprogressTodo;
+
+	// console.log("todos in Todocontent:", todos);
+	// console.log("setTodos in Todocontent:", setTodos);
+
 	return (
 		<section>
 			<ContainerTitle>{set ? "Done..." : "Working..."}</ContainerTitle>
 			<CardConainer>
 				{filterTodos.map((item) => {
-					return <Todocard key={item.id} item={item} removeTodos={removeTodos} settingTodos={settingTodos} />;
+					console.log("item in Todocontent:", item);
+					return <Todocard key={item.id} item={item} todos={todos} setTodos={setTodos} />;
 				})}
 			</CardConainer>
 		</section>
@@ -43,8 +38,9 @@ export default Todocontent;
 const CardConainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	width: 1300px;
+	height: 500px;
 	overflow: auto;
-	margin: 30px;
 `;
 
 const ContainerTitle = styled.h1`

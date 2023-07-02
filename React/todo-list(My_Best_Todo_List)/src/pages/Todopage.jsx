@@ -11,7 +11,7 @@ function Home() {
 		<>
 			<MainContainer>
 				<Mousemover />
-				<Todoinput todos={todos} setTodos={setTodos} />
+				<Todoinput />
 				<TodoList todos={todos} setTodos={setTodos} set={false} />
 				<TodoList todos={todos} setTodos={setTodos} set={true} />
 			</MainContainer>

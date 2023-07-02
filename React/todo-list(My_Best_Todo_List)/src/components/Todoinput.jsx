@@ -2,10 +2,16 @@ import React from "react";
 import uuid from "react-uuid";
 import { useState } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+// import { SetTodo, new_todo } from "../redux/modules/todoReducer";
+import { SetTodo, new_todo } from "../redux/modules/todoSlice";
 
-function Todoinput({ todos, setTodos }) {
-	console.log("input render");
+function Todoinput() {
+	const todoLists = useSelector(SetTodo);
+	const dispatch = useDispatch();
 
+	// console.log("input render");
+	console.log(todoLists);
 	const id = uuid();
 	const [inputs, setInputs] = useState({
 		id: id,
@@ -26,8 +32,13 @@ function Todoinput({ todos, setTodos }) {
 
 	const todoAddButtonHandler = (event) => {
 		event.preventDefault();
-		setTodos([...todos, inputs]);
-		setInputs({ id: id, title: "", content: "", set: false });
+		if (title === "" || content === "") {
+			alert("제목과 내용을 모두 입력해주세요.");
+		} else {
+			// setTodos([...todos, inputs]);
+			dispatch(new_todo(inputs));
+			setInputs({ id: id, title: "", content: "", set: false });
+		}
 	};
 
 	return (
