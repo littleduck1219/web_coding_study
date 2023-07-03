@@ -41,13 +41,19 @@ function Todoinput() {
 		}
 	};
 
+	// const todoAddButtonHandler2 = (event) => {
+	// 	event.preventDefault();
+	// 	dispatch(new_todo(inputs));
+	// 	setInputs({ id: id, title: "", content: "", set: false });
+	// };
+
 	return (
 		<AddInputContainer>
 			<InputContainer>
 				제목 : <SubmitInput name='title' onChange={onChange} value={title} />
 				내용 : <SubmitInput name='content' onChange={onChange} value={content} />
 			</InputContainer>
-			<SubmitButton onClick={todoAddButtonHandler}>추가하기</SubmitButton>
+			<SubmitButton onClick={todoAddButtonHandler}>{"추가하기"}</SubmitButton>
 		</AddInputContainer>
 	);
 }

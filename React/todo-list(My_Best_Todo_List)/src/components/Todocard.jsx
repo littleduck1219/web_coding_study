@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import * as action from "../redux/modules/todoSlice";
+import menu from "../img/expand_more_FILL0_wght400_GRAD0_opsz48.png";
+import { useNavigate } from "react-router-dom";
 
 function Todocard({ item }) {
 	// console.log("card render");
@@ -9,6 +11,7 @@ function Todocard({ item }) {
 	const removeButtonHandler = (id) => {
 		dispatch(action.delete_todo(id));
 	};
+	const navigate = useNavigate();
 
 	const toggleButtonHandler = (id) => {
 		dispatch(action.update_todo(id));
@@ -17,6 +20,12 @@ function Todocard({ item }) {
 	const type = item.set ? "취소" : "완료";
 	return (
 		<TodoCard key={item.id} className='card'>
+			{/* <TodoExpand
+				onClick={() => {
+					navigate(`/Todoexpand/${item.id}`);
+				}}>
+				<img src={menu} alt='' />
+			</TodoExpand> */}
 			<h3>{item.title}</h3>
 			<p>{item.content}</p>
 			<ButtonDiv>
@@ -56,3 +65,5 @@ const Button = styled.button`
 	border-radius: 10px;
 	background-color: white;
 `;
+
+const TodoExpand = styled.button``;
