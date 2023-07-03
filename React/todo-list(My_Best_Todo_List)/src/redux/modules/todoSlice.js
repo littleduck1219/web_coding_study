@@ -7,20 +7,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
 	{
 		id: 0,
-		title: "리덕스 쉽네",
-		content: "아닌듯.... 제정신임??",
-		set: false,
-	},
-	{
-		id: 1,
-		title: "리덕스 쉽네",
-		content: "아닌듯.... 제정신임??",
-		set: false,
-	},
-	{
-		id: 2,
-		title: "리덕스 쉽네",
-		content: "아닌듯.... 제정신임??",
+		title: "나비가 날아다녀요!",
+		content: "우왕",
 		set: false,
 	},
 ];
@@ -28,17 +16,17 @@ const initialState = [
 const todoSlice = createSlice({
 	name: "todoSlice",
 	initialState,
-	// reducers: {
-	// 	new_todo: (state, action) => {
-	// 		return [...state, action.payload];
-	// 	},
-	// 	delete_todo: (state, action) => {
-	// 		return [...state.filter((todo) => todo.id !== action.payload)];
-	// 	},
-	// 	update_todo: (state, action) => {
-	// 		return state.map((todo) => (todo.id === action.payload ? { ...todo, set: !todo.set } : todo));
-	// 	},
-	// },
+	reducers: {
+		new_todo: (state, action) => {
+			return [...state, action.payload];
+		},
+		delete_todo: (state, action) => {
+			return [...state.filter((todo) => todo.id !== action.payload)];
+		},
+		update_todo: (state, action) => {
+			return state.map((todo) => (todo.id === action.payload ? { ...todo, set: !todo.set } : todo));
+		},
+	},
 	extraReducers: {}, // 비동기처리를 합니다.
 });
 
