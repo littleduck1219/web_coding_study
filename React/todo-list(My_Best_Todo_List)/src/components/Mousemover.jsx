@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import butterfly from "../butterfly.gif";
+import butterfly from "../img/butterfly.gif";
 import styled from "styled-components";
 
 function Mousemover() {
