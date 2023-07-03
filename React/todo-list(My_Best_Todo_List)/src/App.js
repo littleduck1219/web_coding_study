@@ -1,22 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import Todopage from "./pages/Todopage";
-import Header from "./components/Header";
+import Router from "./shared/Router";
 
 function App() {
-	return (
-		<StContainer>
-			<Header />
-			<Todopage />
-			<footer></footer>
-		</StContainer>
-	);
+	return <Router />;
 }
 
 export default App;
-
-const StContainer = styled.section`
-	max-width: 1200px;
-	min-width: 800px;
-	margin: 0 auto;
-`;
