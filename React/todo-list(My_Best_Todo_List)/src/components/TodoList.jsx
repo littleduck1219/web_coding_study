@@ -23,7 +23,7 @@ function TodoList({ set }) {
 	);
 
 	const filterTodos = set ? completeTodo : inProgressTodo;
-// 데이터 상위단에서 분류?
+	// 데이터 상위단에서 분류?
 	return (
 		<div className='todo'>
 			<TodoContainerTitle>{set ? "Done...🦋" : "working...🐝"}</TodoContainerTitle>

@@ -7,7 +7,7 @@ function Mousemover() {
 	const target = useRef({ x: 0, y: 0 });
 	const speed = 0.08;
 	const [renderPosition, setRenderPosition] = useState({ x: 0, y: 0 });
-
+	console.log("buffy");
 	const onMouseMove = (event) => {
 		position.current = { x: event.pageX, y: event.pageY };
 	};
