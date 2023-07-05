@@ -1,7 +1,12 @@
 import React from "react";
 import Child from "./Child";
 
-function Father({ pocketMoney, houseName }) {
-	return <Child pocketMoney={pocketMoney} houseName={houseName} />;
+const style = {
+	color: "red",
+	fontWeight: "bold",
+};
+
+function Father() {
+	return <Child />;
 }
 export default Father;

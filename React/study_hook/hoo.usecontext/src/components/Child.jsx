@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FamilyContext } from "../context/FamilyContext";
 
-function Child({ houseName, pocketMoney }) {
-	console.log(houseName, pocketMoney);
-
+function Child() {
+	const data = useContext(FamilyContext);
 	return (
 		<div>
-			<span>{houseName}</span>
-			<span>{pocketMoney}</span>
+			<span>{data.houseName}</span>
+			<span>{data.pocketMoney}</span>
 		</div>
 	);
 }
