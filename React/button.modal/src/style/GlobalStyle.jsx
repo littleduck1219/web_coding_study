@@ -4,8 +4,6 @@ const LayoutStyle = styled.div`
 	margin: 8px;
 `;
 
-const TitleStyle = styled.h1``;
-
 const ButtonLargeStyle = styled.button`
 	cursor: pointer;
 
@@ -62,4 +60,4 @@ const ButtonCircleStyle = styled.button`
 	}
 `;
 
-export { LayoutStyle, TitleStyle, ButtonLargeStyle, ButtonMediumStyle, ButtonSmallStyle, ButtonCircleStyle };
+export { LayoutStyle, ButtonLargeStyle, ButtonMediumStyle, ButtonSmallStyle, ButtonCircleStyle };

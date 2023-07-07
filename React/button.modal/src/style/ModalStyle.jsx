@@ -1,19 +1,17 @@
 import { styled, css } from "styled-components";
 
-const ModalPartContainerStyle = styled.div``;
-
 const ModalFull = styled.div`
+	z-index: 10;
 	width: 100%;
 	height: 100vh;
 	inset: 0px;
 	position: fixed;
 	opacity: ${({ opacity }) => opacity};
 	background-color: rgb(221, 221, 221);
-	z-index: 3;
 `;
 
 const ModalLargeBoxStyle = styled.div`
-	z-index: 3;
+	z-index: 10;
 	position: absolute;
 	display: flex;
 	flex-direction: column;
@@ -49,19 +47,13 @@ const LargeModalButtonContainerStyle = styled.div`
 	margin-left: auto;
 `;
 
-const ModalNotificationStyle = styled.span``;
-
-const LargeModalStyle = styled.div``;
-
 const AllTagStyle = styled.div`
 	display: flex;
 	gap: 10px;
 `;
 
-const SmallModalStyle = styled.div``;
-
 const ModalMediumBoxStyle = styled.div`
-	z-index: 3;
+	z-index: 10;
 	position: absolute;
 	display: flex;
 	flex-direction: column;
@@ -98,12 +90,8 @@ const SmallModalInnerStyle = styled.div`
 export {
 	ModalFull,
 	ModalLargeBoxStyle,
-	ModalPartContainerStyle,
 	LargeModalButtonContainerStyle,
-	ModalNotificationStyle,
-	LargeModalStyle,
 	AllTagStyle,
-	SmallModalStyle,
 	ModalMediumBoxStyle,
 	SmallModalInnerStyle,
 };

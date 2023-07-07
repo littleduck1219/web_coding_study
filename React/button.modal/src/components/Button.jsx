@@ -30,7 +30,7 @@ function Button() {
 
 	return (
 		<B.ButtonPartContainerStyle>
-			<G.TitleStyle>Button</G.TitleStyle>
+			<h1>Button</h1>
 			<B.GreenButtonContainerStyle>
 				<G.ButtonLargeStyle bordercolor={color.green} onClick={FirstAlertButton}>
 					<B.ButtonInnerStyle children={ButtonInner} />

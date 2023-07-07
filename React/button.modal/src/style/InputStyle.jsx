@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-const InputPartContainerStyle = styled.div``;
-
-const InputContainerStyle = styled.div``;
-
-const AllTagStyle = styled.div`
+const AllTagStyle = styled.form`
 	display: flex;
 	/* flex-direction: row; */
 	gap: 30px;
@@ -27,4 +23,4 @@ const InputStyle = styled.input`
 	}
 `;
 
-export { InputPartContainerStyle, InputContainerStyle, AllTagStyle, InputStyle };
+export { AllTagStyle, InputStyle };
