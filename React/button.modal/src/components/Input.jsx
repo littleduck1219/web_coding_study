@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as G from "../style/GlobalStyle";
 import * as I from "../style/InputStyle";
-import * as B from "../style/ButtonStyle";
 import { color } from "../style/Color";
 
 function InputStyle() {

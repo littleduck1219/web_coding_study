@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import * as G from "../style/GlobalStyle";
 import * as M from "../style/ModalStyle";
-import * as B from "../style/ButtonStyle";
 import { color } from "../style/Color";
 
 function Modal() {

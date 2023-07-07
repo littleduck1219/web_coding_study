@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import * as G from "../style/GlobalStyle";
 import * as S from "../style/SelectStyle";
 
 function Select() {
