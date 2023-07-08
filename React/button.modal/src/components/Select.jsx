@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as S from "../style/SelectStyle";
 
 function Select() {
@@ -13,9 +13,9 @@ function Select() {
 		setState((pre) => !pre);
 	};
 
-	const choiceHandler = (setFirstChoice, setFirstSelector) => (event) => {
-		setFirstChoice(event.target.innerText);
-		setFirstSelector(false);
+	const choiceHandler = (setChoice, setSelector) => (event) => {
+		setChoice(event.target.innerText);
+		setSelector(false);
 	};
 
 	return (
@@ -29,10 +29,10 @@ function Select() {
 					{firstSelector && (
 						<div>
 							<S.SelectorChoiceBoxStyle zIndex='2' position='absolute'>
-								{selectorIndex.map((list, index) => {
+								{selectorIndex.map((list) => {
 									return (
 										<S.SelectorChoiceStyle
-											key={index}
+											key={list}
 											onMouseDown={choiceHandler(setFirstChoice, setFirstSelector)}>
 											{list}
 										</S.SelectorChoiceStyle>
