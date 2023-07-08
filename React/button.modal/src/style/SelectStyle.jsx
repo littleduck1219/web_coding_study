@@ -8,6 +8,13 @@ const SelectorPartContainerStyle = styled.div`
 	height: 200px;
 `;
 
+const SecondSelectorPartContainerStyle = styled.div`
+	margin-top: 50px;
+	// position: relative;
+	border: 3px solid lightgray;
+	height: 200px;
+`;
+
 const SelectorContainerStyle = styled.div`
 	display: flex;
 	gap: 10px;
@@ -38,6 +45,17 @@ const SelectorChoiceBoxStyle = styled.div`
 	z-index: ${({ zIndex }) => zIndex};
 	position: ${({ position }) => (position === "absolute" ? "absolute" : "relative")};
 	top: ${({ position }) => (position === "absolute" ? "650px" : "10px")};
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 12px;
+	background-color: rgb(255, 255, 255);
+	width: 300px;
+	height: 160px;
+`;
+
+const SecondSelectorChoiceBoxStyle = styled.div`
+	z-index: ${({ zIndex }) => zIndex};
+	position: ${({ position }) => (position === "absolute" ? "absolute" : "relative")};
+	top: ${({ position }) => (position === "absolute" ? "900px" : "10px")};
 	border: 1px solid rgb(221, 221, 221);
 	border-radius: 12px;
 	background-color: rgb(255, 255, 255);
@@ -78,4 +96,6 @@ export {
 	SelectorChoiceStyle,
 	SelectorFullStyle,
 	SelectorButtonHandlerStyle,
+	SecondSelectorChoiceBoxStyle,
+	SecondSelectorPartContainerStyle,
 };

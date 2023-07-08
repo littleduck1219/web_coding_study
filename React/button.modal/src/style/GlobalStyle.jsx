@@ -4,6 +4,22 @@ const LayoutStyle = styled.div`
 	margin: 8px;
 `;
 
+const ButtonStyleTest = styled.button`
+	cursor: pointer;
+
+	border: 3px solid ${({ bordercolor }) => bordercolor};
+	border-radius: 8px;
+	background-color: white;
+	width: 200px;
+	height: 50px;
+	color: ${({ buttoncolor }) => buttoncolor};
+	font-weight: bold;
+
+	&:active {
+		background-color: lightgray;
+	}
+`;
+
 const ButtonLargeStyle = styled.button`
 	cursor: pointer;
 
