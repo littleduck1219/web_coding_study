@@ -3,6 +3,7 @@ import * as B from "../style/ButtonStyle";
 import arrow from "../img/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.png";
 import alarm from "../img/notifications_FILL0_wght400_GRAD0_opsz48.png";
 import { color } from "../style/Color";
+//https://tilnote.io/pages/623eefea74b8f48522c984a5
 
 function Button() {
 	const FirstAlertButton = () => {
