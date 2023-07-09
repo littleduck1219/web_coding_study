@@ -3,6 +3,7 @@ import * as S from "../style/SelectStyle";
 
 const Select2 = () => {
 	const [actionModal, setActionModal] = useState(false);
+	console.log("🚀 ~ file: Select2.jsx:6 ~ Select2 ~ actionModal:", actionModal);
 	const [modalChoice, setModalChoice] = useState("리엑트");
 
 	const selectorIndex = ["리액트", "자바", "스프링", "리엑트네이티브"];
