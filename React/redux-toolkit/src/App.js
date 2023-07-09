@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { SelectCounter, plusOne, minusOne, inputCount } from "./redux/modules/count.jsx";
+import { Counter, addNumber, minusNumber } from "./redux/modules/countSlice";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [count, setCount] = useState(1);
+	// const counter = useSelector(SelectCounter);
+	// const counter = useSelector(SetTodoSlice);
+	const counter = useSelector(Counter);
+	console.log("🚀 ~ file: App.js:9 ~ App ~ counter:", counter);
+	const dispatch = useDispatch();
+
+	const clickPlusCountHandler = () => {
+		dispatch(addNumber(count));
+	};
+
+	const clickMinusCounterHandler = () => {
+		dispatch(minusNumber(count));
+	};
+
+	const inputCounterHandler = (event) => {
+		setCount(Number(event.target.value));
+	};
+
+	return (
+		<div>
+			<h1>{counter.number}</h1>
+			<input type='number' value={count} onChange={inputCounterHandler} />
+			<button onClick={clickPlusCountHandler}>+</button>
+			<button onClick={clickMinusCounterHandler}>-</button>
+		</div>
+	);
 }
 
 export default App;
