@@ -25,17 +25,24 @@ const Select2 = () => {
 			}
 		};
 
-		document.addEventListener("click", clickOutside);
+		// 클릭 이벤트를 감지하고, 이벤트 캡처링 단계에서 이벤트를 처리합니다.
+		window.onmousedown = clickOutside;
 
 		return () => {
-			document.removeEventListener("click", clickOutside);
+			// 컴포넌트가 언마운트될 때 이벤트 핸들러를 제거합니다.
+			window.onmousedown = null;
 		};
 	}, [actionModal]);
 
 	return (
 		<S.SelectorPartContainerStyle>
 			<h1>{"Select2"}</h1>
-			<S.SelectorButtonStyle onClick={selectButtonHandler(setActionModal)} ref={node}>
+			<S.SelectorButtonStyle
+				onmousedown={(event) => {
+					event.stopPropagation(); // 이벤트 전파를 막습니다.
+					selectButtonHandler(setActionModal)();
+				}}
+				ref={node}>
 				<p>{modalChoice}</p>
 			</S.SelectorButtonStyle>
 			{actionModal && (
@@ -44,7 +51,7 @@ const Select2 = () => {
 						return (
 							<S.SelectorChoiceStyle
 								key={index}
-								onClick={(event) => {
+								onmousedown={(event) => {
 									event.stopPropagation();
 									choiceHandler(setModalChoice, setActionModal)(event);
 								}}>
