@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import TodoCard from "../components/TodoCard";
+import { useDispatch, useSelector } from "react-redux";
+import { __getTodos } from "../redux/modules/todoSlice";
 
 function Todo() {
+	const thunk = useSelector((state) => state.todoSlice);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(__getTodos());
+	}, [dispatch]);
+
 	return (
 		<ListContainer>
 			<TodoTitle>{"내 할일"}</TodoTitle>
