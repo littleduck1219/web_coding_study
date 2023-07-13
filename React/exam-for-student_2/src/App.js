@@ -1,55 +1,70 @@
-import { useState } from "react";
-import uuid from "react-uuid"; // 고유 id생성
-import "./App.css";
+import React, { useState } from "react";
+import {
+	Button,
+	InputContainer,
+	PageWrapper,
+	TodoCard,
+	TodoContainer,
+	TodoHeader,
+	TodoListContainer,
+} from "./components/styles";
+import nextId from "react-id-generator";
+import { useDispatch, useSelector } from "react-redux";
+import { __getTodos, __addToDo, __deleteTodo } from "./redux/modules/todosSlice";
+import { useEffect } from "react";
 
 function App() {
-	const [todos, setTodos] = useState([
-		// todo와 그 상태를 변경하는 setTodo 함수 선언 초기 상태는 배열
-		{ id: 1, title: "React어려워용" },
-		{ id: 2, title: "React어려워용" },
-		{ id: 3, title: "React어려워용" },
-		{ id: 4, title: "React어려워용" },
-		{ id: 5, title: "React어려워용" },
-	]);
-	const [title, setTitle] = useState(""); // title과 그 상태를 변경하는 setTitle 함수 선언 초기 상태 빈값
+	const id = nextId();
+	const dispatch = useDispatch();
+	const todos = useSelector((state) => state.todos.list);
+	console.log("todos: ", todos);
+	const [title, setTitle] = useState("");
+	const [body, setBody] = useState("");
 
-	const todoInputHander = (event) => {
-		// 입력된 값의 value를 title에 업데이트
-		setTitle(event.target.value); // title에 업데이트
-	};
+	useEffect(() => {
+		dispatch(__getTodos());
+	}, [dispatch]);
 
-	const todoAddButtonHandler = () => {
-		// 버튼동작시 새로운 배열을 todos에 추가
+	const onAddTodo = () => {
 		const newTodo = {
-			id: uuid(), // 랜덤 Id 생성
-			title, // 입력한 title
+			id,
+			title,
+			body,
 		};
-		setTodos([...todos, newTodo]); // 기존 항목을 새 배열에 복사하고 그 뒤에 새로운 배열 추가
-		setTitle(""); // title을 초기화
+		dispatch(__addToDo(newTodo));
+		setTitle("");
+		setBody("");
 	};
 
+	const onDeleteTodo = (id) => () => {
+		dispatch(__deleteTodo(id));
+	};
+
+	const onChangeTitle = (e) => setTitle(e.target.value);
+	const onChangeBody = (e) => setBody(e.target.value);
 	return (
-		<div className='layout'>
-			<header></header>
-			<main>
-				<div className='form-content'>
-					<input value={title} onChange={todoInputHander} />
-					<button onClick={todoAddButtonHandler}>추가하기</button>
-				</div>
-				<h1>Todo List</h1>
-				<div className='card-container'>
-					{/* todos 배열의 객체 처리 */}
-					{todos.map((todo) => {
-						return (
-							<div key={todo.id} className='card'>
-								<p>{todo.title}</p>
-							</div>
-						);
-					})}
-				</div>
-			</main>
-			<footer></footer>
-		</div>
+		<PageWrapper>
+			<TodoContainer>
+				<TodoHeader>🐢 SLOW TODO LIST 🐢</TodoHeader>
+				<InputContainer>
+					<span>제목: </span>
+					<input value={title} placeholder='할 일 제목' onChange={onChangeTitle} />
+					<span>내용: </span>
+					<input value={body} placeholder='할 일 내용' onChange={onChangeBody} />
+
+					<Button onClick={onAddTodo}>+ 추가하기</Button>
+				</InputContainer>
+				<TodoListContainer>
+					{todos.map((todo) => (
+						<TodoCard key={todo.id}>
+							<span>제목: {todo.title}</span>
+							<span>할 일: {todo.body}</span>
+							<Button onClick={onDeleteTodo(todo.id)}>삭제하기</Button>
+						</TodoCard>
+					))}
+				</TodoListContainer>
+			</TodoContainer>
+		</PageWrapper>
 	);
 }
 
