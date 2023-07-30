@@ -1,0 +1,18 @@
+.box {
+	background-color: black;
+	width: 300px;
+	height: 300px;
+	transition: transform 0.3s ease;
+}
+
+.box:hover {
+	background-color: red;
+	transform: scale(1.2);
+}
+
+.app {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
