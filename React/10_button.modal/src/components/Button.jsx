@@ -1,55 +1,37 @@
-import * as G from "../style/GlobalStyle";
-import * as B from "../style/ButtonStyle";
-import arrow from "../img/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.png";
-import alarm from "../img/notifications_FILL0_wght400_GRAD0_opsz48.png";
-import { color } from "../style/Color";
-//https://tilnote.io/pages/623eefea74b8f48522c984a5
+import React from "react";
+import Stack from "../components/@elem/Stack";
+import Button from "../components/button/Button";
+import { IconArrow, IconBell } from "../components/button/Icon";
 
-function Button() {
-	const FirstAlertButton = () => {
-		alert("버튼을 만들어 보세요");
-	};
-
-	const promptButton = () => {
-		if (window.prompt("어렵나요?")) {
-		}
-	};
-
-	const ButtonInner = (
-		<>
-			<B.ButtonText>{"Large Primary Button"}</B.ButtonText>
-			<B.ButtonImg src={arrow} alt='arrow' />
-		</>
-	);
-
-	const ButtonInner2 = (
-		<>
-			<B.ButtonText>{"Large Primary Button"}</B.ButtonText>
-			<B.ButtonImg src={alarm} alt='alarm' />
-		</>
-	);
-
+const FeatureButton = () => {
 	return (
-		<B.ButtonPartContainerStyle>
+		<Stack row={false} gap={10}>
 			<h1>Button</h1>
-			<B.GreenButtonContainerStyle>
-				<G.ButtonLargeStyle bordercolor={color.green} onClick={FirstAlertButton}>
-					<B.ButtonInnerStyle children={ButtonInner} />
-				</G.ButtonLargeStyle>
+			<Stack gap={10}>
+				<Button.Primary
+					rightSlot={<IconArrow color={"#000000"} />}
+					size='large'
+					outlined
+					onClick={() => window.alert("버튼을 만들어보세요")}>
+					Large Primary Button
+				</Button.Primary>
+				<Button.Primary size='medium'>Medium</Button.Primary>
+				<Button.Primary>Small</Button.Primary>
+			</Stack>
 
-				<G.ButtonMediumStyle backgroundcolor={color.green} children={"Medium"} />
-				<G.ButtonSmallStyle backgroundcolor={color.green} children={"Small"} />
-			</B.GreenButtonContainerStyle>
-
-			<B.RedButtonContainerStyle>
-				<G.ButtonLargeStyle bordercolor={color.pink} buttoncolor='red' onClick={promptButton}>
-					<B.ButtonInnerStyle children={ButtonInner2} />
-				</G.ButtonLargeStyle>
-				<G.ButtonMediumStyle backgroundcolor={color.pink} buttoncolor='red' children={"Medium"} />
-				<G.ButtonSmallStyle backgroundcolor={color.pink} buttoncolor='red' children={"Small"} />
-			</B.RedButtonContainerStyle>
-		</B.ButtonPartContainerStyle>
+			<Stack gap={10}>
+				<Button.Negative
+					size='large'
+					outlined
+					rightSlot={<IconBell />}
+					onClick={() => console.log(window.prompt("어렵나요?"))}>
+					Large Negative Button
+				</Button.Negative>
+				<Button.Negative size='medium'>Medium</Button.Negative>
+				<Button.Negative>Small</Button.Negative>
+			</Stack>
+		</Stack>
 	);
-}
+};
 
-export default Button;
+export default FeatureButton;

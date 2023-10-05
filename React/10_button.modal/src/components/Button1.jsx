@@ -80,10 +80,10 @@ const StyledButton = styled.button`
 		}
 	}}
 
-	${({ outlined, bc }) => {
+	${({ outlined, bdc }) => {
 		if (outlined) {
 			return css`
-				border: 3px solid ${bc};
+				border: 3px solid ${bdc};
 				background-color: #fff;
 				font-weight: 600;
 
